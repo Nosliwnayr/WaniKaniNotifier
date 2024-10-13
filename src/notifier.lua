@@ -24,6 +24,7 @@ local headers, stream = assert(summary_request:go())
 local body = assert(stream:get_body_as_string())
 if headers:get ":status" ~= "200" then
     error(body)
+    os.exit()
 end
 
 -- Json -> Lua
@@ -40,5 +41,6 @@ if reviews_due then
     local body = assert(stream:get_body_as_string())
     if headers:get ":status" ~= "200" then
         error(body)
+        os.exit()
     end
 end
